@@ -1,0 +1,48 @@
+services:
+  homeserver:
+    image: forgejo.ellis.link/continuwuation/continuwuity:latest-maxperf
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/continuwuity
+      - /etc/resolv.conf:/etc/resolv.conf:ro
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.continuwuity.rule=(Host(`matrix.abus.sh`) || (Host(`abus.sh`) && PathPrefix(`/.well-known/matrix`)))"
+      - "traefik.http.routers.continuwuity.entrypoints=websecure"
+      - "traefik.http.routers.continuwuity.tls=true"
+      - "traefik.http.routers.continuwuity.service=continuwuity"
+      - "traefik.http.services.continuwuity.loadbalancer.server.port=6167"
+      # possibly, depending on your config:
+      # - "traefik.http.routers.continuwuity.tls.certresolver=letsencrypt"
+    environment:
+      CONTINUWUITY_SERVER_NAME: matrix.abus.sh
+      CONTINUWUITY_DATABASE_PATH: /var/lib/continuwuity
+      CONTINUWUITY_ADDRESS: 0.0.0.0
+      CONTINUWUITY_PORT: 6167
+      CONTINUWUITY_MAX_REQUEST_SIZE: 20971520
+      CONTINUWUITY_ALLOW_REGISTRATION: 'true'
+      CONTINUWUITY_ALLOW_FEDERATION: 'true'
+      CONTINUWUITY_ALLOW_CHECK_FOR_UPDATES: 'true'
+      CONTINUWUITY_TRUSTED_SERVERS: '["matrix.org"]'
+      CONTINUWUITY_ALLOW_ENCRYPTION: 'true'
+      CONTINUWUITY_WELL_KNOWN: |
+        {
+        client=https://matrix.abus.sh,
+        server=matrix.abus.sh:443
+        }
+    #cpuset: "0-4" # Uncomment to limit to specific CPU cores
+    ulimits:
+      nofile:
+        soft: 1048567
+        hard: 1048567
+
+volumes:
+  db:
+
+networks:
+  proxy:
+    external: true
+
+# vim: ts=2:sw=2:expandtab
