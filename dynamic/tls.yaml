@@ -1,4 +1,4 @@
 tls:
   certificates:
-    - certFile: /certs/matrix.abus.lan.pem
-      keyFile:  /certs/matrix.abus.lan-key.pem
+    - certFile: /certs/matrix.abus.sh.pem
+      keyFile:  /certs/matrix.abus.sh-key.pem
