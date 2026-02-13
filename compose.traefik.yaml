@@ -59,7 +59,8 @@ services:
 
       # Basic‑auth middleware
       - "traefik.http.middlewares.dashboard-auth.basicauth.users=admin:$$apr1$$pqp6klVf$$/z21T36C7uUK4OeXw8clH."
-      - "traefik.http.routers.dashboard.middlewares=dashboard-auth@docker"
+      - "traefik.http.middlewares.ip-allowlist.ipallowlist.sourceRange=172.18.0.1"
+      - "traefik.http.routers.dashboard.middlewares=ip-allowlist,dashboard-auth@docker"
 
 networks:
   proxy:
