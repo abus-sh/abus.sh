@@ -14,8 +14,7 @@ services:
       - "traefik.http.routers.continuwuity.tls=true"
       - "traefik.http.routers.continuwuity.service=continuwuity"
       - "traefik.http.services.continuwuity.loadbalancer.server.port=6167"
-      # possibly, depending on your config:
-      # - "traefik.http.routers.continuwuity.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.continuwuity.tls.certresolver=letsencrypt"
     environment:
       CONTINUWUITY_SERVER_NAME: matrix.abus.sh
       CONTINUWUITY_DATABASE_PATH: /var/lib/continuwuity
