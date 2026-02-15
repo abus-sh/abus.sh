@@ -22,7 +22,7 @@ services:
       - ${BASE_PATH}/dynamic:/dynamic:ro
       - ${BASE_PATH}/traefik/traefik.yaml:/etc/traefik/traefik.yml:ro
 
-  # Traefik Dynamic configuration via Docker labels
+    # Traefik Dynamic configuration via Docker labels
     labels:
       # Enable self‑routing
       - "traefik.enable=true"
