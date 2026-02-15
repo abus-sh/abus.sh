@@ -16,6 +16,7 @@ services:
       - "8080:8080"
 
     volumes:
+      - acme:/etc/traefik/acme.json
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${BASE_PATH}/certs:/certs:ro
       - ${BASE_PATH}/dynamic:/dynamic:ro
@@ -36,6 +37,9 @@ services:
       - "traefik.http.middlewares.dashboard-auth.basicauth.users=admin:$$apr1$$pqp6klVf$$/z21T36C7uUK4OeXw8clH."
       - "traefik.http.middlewares.ip-allowlist.ipallowlist.sourceRange=172.18.0.1"
       - "traefik.http.routers.dashboard.middlewares=ip-allowlist,dashboard-auth@docker"
+
+volumes:
+  acme:
 
 networks:
   proxy:
