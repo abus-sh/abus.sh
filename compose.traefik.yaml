@@ -20,7 +20,35 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${BASE_PATH}/certs:/certs:ro
       - ${BASE_PATH}/dynamic:/dynamic:ro
-      - ${BASE_PATH}/traefik/traefik.yaml:/etc/traefik/traefik.yml:ro
+
+    command:
+      # Entry Points
+      - "--entryPoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+
+      # Providers
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=proxy"
+
+      # API and Dashboard
+      - "--api.dashboard=true"
+      - "--api.insecure=false"
+
+      # Logging and Analytics
+      - "--log.level=DEBUG"
+      - "--accesslog=true"
+      - "--metrics.prometheus=true"
+      - "--global.sendAnonymousUsage=true"
+      
+      # Certificate Resolvers
+      - "--certificatesResolvers.letsencrypt.acme.email=admin@abus.sh"
+      - "--certificatesResolvers.letsencrypt.acme.storage=/acme/acme.json"
+      - "--certificatesResolvers.letsencrypt.acme.httpChallenge.entryPoint=web"
 
     # Traefik Dynamic configuration via Docker labels
     labels:
