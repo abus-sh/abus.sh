@@ -1,0 +1,4 @@
+services:
+  homeserver:
+    labels:
+      - "traefik.http.routers.continuwuity.tls.certresolver=letsencrypt"
