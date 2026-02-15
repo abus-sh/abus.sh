@@ -1,6 +1,6 @@
 services:
   homeserver:
-    image: forgejo.ellis.link/continuwuation/continuwuity:latest-maxperf
+    image: forgejo.ellis.link/continuwuation/continuwuity:main-maxperf
     restart: unless-stopped
     volumes:
       - db:/var/lib/continuwuity
