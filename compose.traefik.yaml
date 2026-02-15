@@ -16,7 +16,7 @@ services:
       - "8080:8080"
 
     volumes:
-      - acme:/etc/traefik/acme.json
+      - acme:/acme
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${BASE_PATH}/certs:/certs:ro
       - ${BASE_PATH}/dynamic:/dynamic:ro
