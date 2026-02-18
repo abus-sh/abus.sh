@@ -357,6 +357,7 @@ bridge:
         "*": relay
         "matrix.abus.sh": user
         "@abus:matrix.abus.sh": admin
+        "@mautrix-bridge:matrix.abus.sh": admin
 
 # Logging config. See https://github.com/tulir/zeroconfig for details.
 logging:
