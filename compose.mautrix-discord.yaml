@@ -1,0 +1,10 @@
+services:
+  mautrix-discord:
+    image: dock.mau.dev/mautrix/discord:v0.7.6
+    restart: unless-stopped
+
+    volumes:
+      - ${BASE_PATH}/mautrix-discord:/data
+    
+    ports:
+      - "29334:29334"
