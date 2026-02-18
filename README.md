@@ -1,8 +1,7 @@
 # Deploying
 
-The compose file for Traefik requires that the `BASE_PATH` environment variable be set to the
-directory containing the `certs` and `dynamic` directories. In a local deployment, `.` is usually
-correct.
+The compose file for mautrix-discord requires that the `BASE_PATH` environment variable be set to 
+the directory containing the `mautrix-discord` directory.
 
 The first lauch of Continuwuity must be started differently to create an initial user. Run the
 following command (replacing with the real username and password), then start it normally when it
