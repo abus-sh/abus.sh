@@ -25,6 +25,7 @@ services:
       CONTINUWUITY_TRUSTED_SERVERS: '["matrix.org"]'
       CONTINUWUITY_ALLOW_ENCRYPTION: 'true'
       CONTINUWUITY_QUERY_OVER_TCP_ONLY: 'true'
+      CONTINUWUITY_AUTO_JOIN_ROOMS: '["#announcements:matrix.abus.sh", "#general:matrix.abus.sh"]'
       CONTINUWUITY_WELL_KNOWN: |
         {
         client=https://matrix.abus.sh,
