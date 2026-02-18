@@ -3,8 +3,13 @@ services:
     image: dock.mau.dev/mautrix/discord:v0.7.6
     restart: unless-stopped
 
+    networks:
+      proxy:
+        ipv4_address: 172.18.0.76
+
     volumes:
       - ${BASE_PATH}/mautrix-discord:/data
-    
-    ports:
-      - "29334:29334"
+
+networks:
+  proxy:
+    external: true
