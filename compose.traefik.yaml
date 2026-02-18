@@ -70,3 +70,9 @@ volumes:
 networks:
   proxy:
     name: proxy
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+          ip_range: 172.18.0.0/16
+          gateway: 172.18.0.1
