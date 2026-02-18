@@ -9,8 +9,12 @@ All secret files should have a template file committed to the repository with al
 information removed. The template file must have the same name as the original file with ".example"
 appended to it.
 
+## mautrix-discord
+
 The compose file for mautrix-discord requires that the `BASE_PATH` environment variable be set to 
 the directory containing the `mautrix-discord` directory.
+
+## Continuwuity
 
 The first lauch of Continuwuity must be started differently to create an initial user. Run the
 following command (replacing with the real username and password), then start it normally when it
