@@ -7,6 +7,14 @@ services:
       proxy:
         ipv4_address: 172.18.0.76
 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mautrix-discord.rule=Host(`discord.mautrix.abus.sh`)"
+      - "traefik.http.routers.mautrix-discord.entrypoints=websecure"
+      - "traefik.http.routers.mautrix-discord.tls=true"
+      - "traefik.http.routers.mautrix-discord.service=mautrix-discord"
+      - "traefik.http.services.mautrix-discord.loadbalancer.server.port=29334"
+
     volumes:
       - ${BASE_PATH}/mautrix-discord:/data
 

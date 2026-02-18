@@ -1,0 +1,4 @@
+services:
+  mautrix-discord:
+    labels:
+      - "traefik.http.routers.mautrix-discord.tls.certresolver=letsencrypt"
