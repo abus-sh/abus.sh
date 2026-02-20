@@ -59,3 +59,42 @@ of this happening at the time of writing (outside of some users who abused the s
 information about puppeting your account can be found
 [here](https://docs.mau.fi/bridges/go/discord/authentication.html). The author strongly recommends
 *not* using the "token login" method.
+
+# Message Recovery (**strongly** recommended)
+
+## Why This Matters (can be skipped)
+
+Matrix is end-to-end encrypted, which means that only you and your intended recipients can read
+your messages (there are several asterisks here, ask your resident cryptography nerd for nuance).
+This works by encrypting your messages with a key. Only you and your intended recipients have the
+key that can decrypt your messages. This is great for privacy and security, but has a major
+drawback: what if you lose your key? This can happen for many reasons, such as hardware failure or
+signing out. Because of *math*, this key can't be recovered if lost entirely. This would mean that
+you couldn't read your old encrypted messages.
+
+Matrix solves this by allowing users to enable account recovery. This takes your key and encrypts it
+with a password/key that only you know. The encrypted key is stored on the Matrix server. If you
+lose your key, you can ask the Matrix server for the encrypted key. So long as you know the backup
+password/key, you can decrypt your key and everything is back to normal. Since the key on the server
+is encrypted, this doesn't compromise the secrecy of your messages.
+
+## How to Enable Message Recovery
+
+These steps only apply to the Element client. Other clients may have a different process (or may not
+support this process at all). 
+
+1. Sign into Matrix. If you don't have Element installed, you can use the
+[Element web client](https://app.element.io/).
+2. Click on your profile picture in the top left corner. This will open a new menu.
+3. Click on "All settings". This will open a new menu.
+4. Click on the "Encryption" tab in the new menu.
+5. Under the "Recovery" heading, click "Set up recovery". If you have already set up account
+recovery, this will say "Change recovery key" instead.
+6. Click "Continue".
+7. Your recovery key will appear. **You must save this someplace safe.** If you lose this recovery
+key, message recovery will be harder or impossible.
+8. Click "Continue".
+9. Enter your recovery key. This checks to make sure you saved it correctly.
+10. Click "Finish set up".
+11. You will return to the previous screen. If it succeeded, the button that said "Set up recovery"
+should now say "Set up recovery".
